@@ -1,10 +1,25 @@
-import React from 'react';
-import {render} from 'react-dom';
+import {createStore} from "redux";
 
-class App extends React.Component {
-  render () {
-    return <p> Hello React!</p>;
+const reducer = function(state, action) {
+  if(action.type === "INC"){
+    return state + action.payload;
   }
+
+  if(action.type === "DEC"){
+    return state - action.payload;
+  }
+
+  return state;
 }
 
-render(<App/>, document.getElementById('app'));
+const store = createStore(reducer, 0);
+
+store.subscribe(() => {
+  console.log("store changed", store.getState())
+})
+
+store.dispatch({type: "INC", payload: 2})
+store.dispatch({type: "INC", payload: 500})
+store.dispatch({type: "INC", payload: 2})
+store.dispatch({type: "INC", payload: 27})
+store.dispatch({type: "DEC", payload: 1000})

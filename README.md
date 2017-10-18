@@ -1,3 +1,3 @@
-# React Starter
+# Redux Tutorial
 
-A starter repo in React.js
+A tutorial in React Redux by LearnCode.Academy
